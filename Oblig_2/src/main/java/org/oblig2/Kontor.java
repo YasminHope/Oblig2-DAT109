@@ -1,22 +1,27 @@
 package org.oblig2;
 
+/**
+ * Klasse for kontorer
+ *
+ * @author Yasmin Maria Hope
+ */
 public class Kontor {
-    private int kontornummer;
+    private int kontornr;
     private String telefonnr;
     private Adresse adresse;
 
-    public Kontor (int kontornummer, String telefonnr, Adresse adresse) {
-        this.kontornummer = kontornummer;
+    public Kontor (int kontornr, String telefonnr, Adresse adresse) {
+        this.kontornr = kontornr;
         this.telefonnr = telefonnr;
         this.adresse = adresse;
     }
 
-    public int getKontornummer() {
-        return kontornummer;
+    public int getKontornr() {
+        return kontornr;
     }
 
-    public void setKontornummer(int kontornummer) {
-        this.kontornummer = kontornummer;
+    public void setKontornr(int kontornr) {
+        this.kontornr = kontornr;
     }
 
     public String getTelefonnr() {
@@ -33,5 +38,14 @@ public class Kontor {
 
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
+    }
+
+    @Override
+    public String toString() {
+        return "Kontor{" +
+                "kontornummer=" + kontornr +
+                ", telefonnr='" + telefonnr + '\'' +
+                ", adresse=" + adresse +
+                '}';
     }
 }

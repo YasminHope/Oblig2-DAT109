@@ -1,5 +1,10 @@
 package org.oblig2;
 
+/**
+ * Klasse for å holde på adresseinformasjon
+ *
+ * @author Yasmin Maria Hope
+ */
 public class Adresse {
     private String gateadresse;
     private int postnr;
