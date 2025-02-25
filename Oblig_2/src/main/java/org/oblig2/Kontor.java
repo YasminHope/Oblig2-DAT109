@@ -1,6 +1,7 @@
 package org.oblig2;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Klasse for kontorer
@@ -24,13 +25,17 @@ public class Kontor {
         bil.setTilgjengelighet(false);
     }
 
-    public void LeiUtBil(Kunde kunde, Bil bil, String kredittkortnr, int kmKjørt) {
+    public void leiUtBil(Kunde kunde, Bil bil, String kredittkortnr, Date datoUtleie, Date datoRetur) {
         kunde.setKredittkortnr(kredittkortnr);
-        bil.setKmstand(bil.getKmstand() + kmKjørt);
+        bil.getRegnr();
+        bil.getKmstand();
+
     }
 
-    public void taImotBil(Bil bil) {
-        bil.
+    public void taImotBil(Bil bil, int kmKjørt, Date datoRetur) {
+        int nåværendeKmstand = bil.getKmstand();
+        bil.setTilgjengelighet(true);
+        bil.setKmstand(nåværendeKmstand + kmKjørt);
     }
 
     public int getKontornr() {
