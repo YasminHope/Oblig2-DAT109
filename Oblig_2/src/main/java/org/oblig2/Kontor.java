@@ -21,6 +21,16 @@ public class Kontor {
         billiste = new ArrayList<Bil>();
     }
 
+    public ArrayList<Bil> søkOppBil(Kontor kontor, Date datoForUtleie) {
+        ArrayList<Bil> tilgjengeligeSøkteBiler = new ArrayList<Bil>();
+        for (Bil bil: billiste) {
+            if (bil.getKontor() == kontor && bil.isTilgjengelig()) {
+                 tilgjengeligeSøkteBiler.add(bil);
+            }
+        }
+        return tilgjengeligeSøkteBiler;
+    }
+
     public void reserverBil(Bil bil) {
         bil.setTilgjengelighet(false);
     }

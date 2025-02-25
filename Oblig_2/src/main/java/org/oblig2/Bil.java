@@ -61,7 +61,7 @@ public class Bil {
         this.utleiegruppe = utleiegruppe;
     }
 
-    public boolean isTilgjengelighet() {
+    public boolean isTilgjengelig() {
         return tilgjengelighet;
     }
 
