@@ -12,6 +12,7 @@ public class Bil {
     private String utleiegruppe;
     private boolean tilgjengelighet;
     private Kontor kontor;
+    private int kmstand;
 
     public Bil(String regnr, String merke, String farge, String utleiegruppe, Kontor kontor) {
         this.regnr = regnr;
@@ -20,7 +21,9 @@ public class Bil {
         this.utleiegruppe = utleiegruppe;
         tilgjengelighet = true;
         this.kontor = kontor;
+        kmstand = 0;
     }
+
 
     public String getRegnr() {
         return regnr;
@@ -64,6 +67,14 @@ public class Bil {
 
     public Kontor getKontor() {
         return kontor;
+    }
+
+    public int getKmstand() {
+        return kmstand;
+    }
+
+    public void setKmstand(int kmstand) {
+        this.kmstand = kmstand;
     }
 
     public void setKontor(Kontor kontor) {

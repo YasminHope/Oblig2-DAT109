@@ -10,6 +10,7 @@ public class Kunde {
     private String etternavn;
     private Adresse adresse;
     private String telefonnr;
+    private String kredittkortnr;
 
     public Kunde(String fornavn, String etternavn, Adresse adresse, String telefonnr) {
         this.fornavn = fornavn;
@@ -48,5 +49,13 @@ public class Kunde {
 
     public void setTelefonnr(String telefonnr) {
         this.telefonnr = telefonnr;
+    }
+
+    public String getKredittkortnr() {
+        return kredittkortnr;
+    }
+
+    public void setKredittkortnr(String kredittkortnr) {
+        this.kredittkortnr = kredittkortnr;
     }
 }

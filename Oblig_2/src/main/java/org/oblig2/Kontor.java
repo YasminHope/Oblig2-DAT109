@@ -1,5 +1,7 @@
 package org.oblig2;
 
+import java.util.ArrayList;
+
 /**
  * Klasse for kontorer
  *
@@ -9,11 +11,26 @@ public class Kontor {
     private int kontornr;
     private String telefonnr;
     private Adresse adresse;
+    private ArrayList<Bil> billiste;
 
     public Kontor (int kontornr, String telefonnr, Adresse adresse) {
         this.kontornr = kontornr;
         this.telefonnr = telefonnr;
         this.adresse = adresse;
+        billiste = new ArrayList<Bil>();
+    }
+
+    public void reserverBil(Bil bil) {
+        bil.setTilgjengelighet(false);
+    }
+
+    public void LeiUtBil(Kunde kunde, Bil bil, String kredittkortnr, int kmKjørt) {
+        kunde.setKredittkortnr(kredittkortnr);
+        bil.setKmstand(bil.getKmstand() + kmKjørt);
+    }
+
+    public void taImotBil(Bil bil) {
+        bil.
     }
 
     public int getKontornr() {
