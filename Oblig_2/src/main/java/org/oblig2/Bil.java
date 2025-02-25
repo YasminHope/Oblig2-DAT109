@@ -24,6 +24,10 @@ public class Bil {
         kmstand = 0;
     }
 
+    public void oppdaterKmstand(int kmKjørt) {
+        kmstand+=kmKjørt;
+    }
+
 
     public String getRegnr() {
         return regnr;

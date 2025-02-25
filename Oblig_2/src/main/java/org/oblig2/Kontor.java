@@ -35,7 +35,7 @@ public class Kontor {
     public void taImotBil(Bil bil, int kmKjørt, Date datoRetur) {
         int nåværendeKmstand = bil.getKmstand();
         bil.setTilgjengelighet(true);
-        bil.setKmstand(nåværendeKmstand + kmKjørt);
+        bil.oppdaterKmstand(kmKjørt);
     }
 
     public int getKontornr() {
