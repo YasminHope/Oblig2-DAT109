@@ -1,5 +1,8 @@
 package org.oblig2;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  * Klasse for kunder
  *
@@ -17,6 +20,16 @@ public class Kunde {
         this.etternavn = etternavn;
         this.adresse = adresse;
         this.telefonnr = telefonnr;
+    }
+
+    public ArrayList<Bil> søkOppBil(Kontor kontor, Date datoForUtleie, int antallDager) {
+        ArrayList<Bil> søkteBiler = new ArrayList<Bil>();
+        for (Bil bil: kontor.getBilliste()) {
+            if (bil.isTilgjengelig()) {
+                søkteBiler.add(bil);
+            }
+        }
+        return søkteBiler;
     }
 
     public String getFornavn() {

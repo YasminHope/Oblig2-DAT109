@@ -21,16 +21,6 @@ public class Kontor {
         billiste = new ArrayList<Bil>();
     }
 
-    public ArrayList<Bil> søkOppBil(Kontor kontor, Date datoForUtleie) {
-        ArrayList<Bil> tilgjengeligeSøkteBiler = new ArrayList<Bil>();
-        for (Bil bil: billiste) {
-            if (bil.getKontor() == kontor && bil.isTilgjengelig()) {
-                 tilgjengeligeSøkteBiler.add(bil);
-            }
-        }
-        return tilgjengeligeSøkteBiler;
-    }
-
     public void reserverBil(Bil bil) {
         bil.setTilgjengelighet(false);
     }
@@ -42,8 +32,7 @@ public class Kontor {
 
     }
 
-    public void taImotBil(Bil bil, int kmKjørt, Date datoRetur) {
-        int nåværendeKmstand = bil.getKmstand();
+    public void returBil(Bil bil, int kmKjørt, Date datoRetur) {
         bil.setTilgjengelighet(true);
         bil.oppdaterKmstand(kmKjørt);
     }
@@ -70,6 +59,14 @@ public class Kontor {
 
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
+    }
+
+    public ArrayList<Bil> getBilliste() {
+        return billiste;
+    }
+
+    public void setBilliste(ArrayList<Bil> billiste) {
+        this.billiste = billiste;
     }
 
     @Override
