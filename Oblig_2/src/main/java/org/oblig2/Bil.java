@@ -1,5 +1,7 @@
 package org.oblig2;
 
+import java.util.Date;
+
 /**
  * Klasse for biler
  *
@@ -13,6 +15,8 @@ public class Bil {
     private boolean tilgjengelighet;
     private Kontor kontor;
     private int kmstand;
+    private Date datoUtleie;
+    private Date datoRetur;
 
     public Bil(String regnr, String merke, String farge, String utleiegruppe, Kontor kontor) {
         this.regnr = regnr;
@@ -83,5 +87,20 @@ public class Bil {
 
     public void setKontor(Kontor kontor) {
         this.kontor = kontor;
+    }
+    public Date getDatoUtleie() {
+        return datoUtleie;
+    }
+
+    public void setDatoUtleie(Date datoUtleie) {
+        this.datoUtleie = datoUtleie;
+    }
+
+    public Date getDatoRetur() {
+        return datoRetur;
+    }
+
+    public void setDatoRetur(Date datoRetur) {
+        this.datoRetur = datoRetur;
     }
 }

@@ -1,13 +1,15 @@
 package org.oblig2;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.Scanner;
 
 /**
  * Klasse for kontorer
+ * Meoder for å opprette kontor, kunde, bil, utleie av bil og retur av bil. 
  *
- * @author Yasmin Maria Hope
+ * @author Yasmin Maria Hope og Ingelin Vikre
  */
 public class Kontor {
     private int kontornr;
@@ -78,12 +80,35 @@ public class Kontor {
                 ", adresse=" + adresse +
                 '}';
     }
-    /**
-    * Oppretter en ny kunde ved å be om informasjon fra brukeren.
-    * 
-    * @return Et nytt Kunde-objekt basert på brukerens input.
-    * @author Ingelin Vikre
-    */
+    
+    	public Kontor opprettNyttKontor() {
+    		Scanner scanner = new Scanner(System.in);
+    		
+    		// Informasjon om kontoret
+    		System.out.print("Skriv innt kontorets kontornr");
+    		int kontornr = Integer.parseInt(scanner.nextLine()); 
+    		
+    		System.out.print("Skriv inn kontorets telefonnummer");
+    		String telefonnr = scanner.nextLine(); 
+    		
+    		// Adresseinformasjon
+            System.out.print("Skriv inn kontorets gateadresse: ");
+            String gateadresse = scanner.nextLine();
+
+            System.out.print("Skriv inn kontorets postnummer: ");
+            int postnr = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("Skriv inn kontorets poststed: ");
+            String poststed = scanner.nextLine();
+
+    		
+            Adresse adresse = new Adresse(gateadresse, postnr, poststed);
+            Kontor nyttKontor = new Kontor(kontornr, telefonnr, adresse); 
+    		
+            System.out.println("Nytt kontor opprettet: " + kontornr); 
+            return nyttKontor; 
+    	}
+    	
         public Kunde opprettKunde() {
         	Scanner scanner = new Scanner(System.in);
 
@@ -114,12 +139,7 @@ public class Kontor {
             System.out.println("Ny kunde opprettet: " + fornavn + " " + etternavn);
             return nyKunde;
         }
-
-    /**
-    * Oppretter en ny bil ved å be om informasjon fra brukeren.
-    * 
-    * @return Et nytt Bil-objekt basert på brukerens input.
-    */
+        
         public Bil opprettBil() {
         	Scanner scanner = new Scanner(System.in);
 
@@ -168,5 +188,46 @@ public class Kontor {
             System.out.println("Ny bil opprettet: " + regnr);
             return nyBil;
             }
+    
+        // Utleie av bil - metoden for å leie ut bil
+        public void utleieBil(Kunde kunde, Bil bil, String kredittkortnr, Date datoUtleie, Date datoRetur) {
+            if (bil.isTilgjengelig()) {
+                // Sett bilens tilgjengelighet til false (den er nå utleid)
+                bil.setTilgjengelighet(false);
+
+                // Lagre kredittkortinfo for kunden
+                kunde.setKredittkortnr(kredittkortnr);
+
+                // Lagre datoene for utleie
+                bil.setDatoUtleie(datoUtleie);
+                bil.setDatoRetur(datoRetur);
+
+                // Sett opp bilens km-stand hvis nødvendig (her antar vi at det er null i starten)
+                bil.setKmstand(0);  // Du kan eventuelt spørre kunden om start-km-stand
+
+                // Vis utleieinfo
+                System.out.println("Bilen med regnr " + bil.getRegnr() + " er utleid til " + kunde.getFornavn() + " " + kunde.getEtternavn());
+            } else {
+                System.out.println("Bilen er ikke tilgjengelig for utleie.");
+            }
         }
+
+        // Retur av bil - metoden for å returnere bil
+        public void returBil(Kunde kunde, Bil bil, int kmKjørt, Date datoRetur) {
+            // Sett tilgjengeligheten tilbake til true (bil er tilgjengelig for neste kunde)
+            bil.setTilgjengelighet(true);
+
+            // Oppdater km-stand
+            bil.oppdaterKmstand(kmKjørt);
+
+            // Sett dato for retur
+            bil.setDatoRetur(datoRetur);
+
+            // Skriv ut returmelding
+            System.out.println("Bilen med regnr " + bil.getRegnr() + " er returnert av " + kunde.getFornavn() + " " + kunde.getEtternavn() +
+                    ". Kilometerstand ved retur: " + bil.getKmstand());
+        }
+    }
+        
+        
 
