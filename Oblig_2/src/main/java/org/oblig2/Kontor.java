@@ -192,20 +192,16 @@ public class Kontor {
         // Utleie av bil - metoden for å leie ut bil
         public void utleieBil(Kunde kunde, Bil bil, String kredittkortnr, Date datoUtleie, Date datoRetur) {
             if (bil.isTilgjengelig()) {
-                // Sett bilens tilgjengelighet til false (den er nå utleid)
+                
                 bil.setTilgjengelighet(false);
 
-                // Lagre kredittkortinfo for kunden
                 kunde.setKredittkortnr(kredittkortnr);
 
-                // Lagre datoene for utleie
                 bil.setDatoUtleie(datoUtleie);
                 bil.setDatoRetur(datoRetur);
 
-                // Sett opp bilens km-stand hvis nødvendig (her antar vi at det er null i starten)
-                bil.setKmstand(0);  // Du kan eventuelt spørre kunden om start-km-stand
+                bil.setKmstand(0);  
 
-                // Vis utleieinfo
                 System.out.println("Bilen med regnr " + bil.getRegnr() + " er utleid til " + kunde.getFornavn() + " " + kunde.getEtternavn());
             } else {
                 System.out.println("Bilen er ikke tilgjengelig for utleie.");
@@ -214,20 +210,19 @@ public class Kontor {
 
         // Retur av bil - metoden for å returnere bil
         public void returBil(Kunde kunde, Bil bil, int kmKjørt, Date datoRetur) {
-            // Sett tilgjengeligheten tilbake til true (bil er tilgjengelig for neste kunde)
+            
             bil.setTilgjengelighet(true);
 
-            // Oppdater km-stand
             bil.oppdaterKmstand(kmKjørt);
 
-            // Sett dato for retur
             bil.setDatoRetur(datoRetur);
 
-            // Skriv ut returmelding
             System.out.println("Bilen med regnr " + bil.getRegnr() + " er returnert av " + kunde.getFornavn() + " " + kunde.getEtternavn() +
                     ". Kilometerstand ved retur: " + bil.getKmstand());
         }
-    }
+        
+        }
+
         
         
 

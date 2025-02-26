@@ -12,6 +12,6 @@ public class MockScanner {
         if (index < inputs.length) {
             return inputs[index++];
         }
-        return null; // Or a default value if necessary
+        return null; 
     }
 }
